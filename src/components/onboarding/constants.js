@@ -1,0 +1,2 @@
+export const START_LESSON = "START_LESSON";
+export const START_CHALLENGE = "START_CHALLENGE";
