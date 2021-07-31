@@ -5,38 +5,20 @@ import OnBoardingService from '../../components/onboarding/service';
 
 export const RightSideBar = () => {
   const dispatch = useDispatch();
-  const sidebarRef = useRef(null);
+  const getStartedRef = useRef(null);
   const startLessonRef = useRef(null);
-  const startChallengeRef = useRef(null);
-  const [view, setView] = useState(0);
 
   useEffect(() => {
     OnBoardingService.setStep(
       dispatch,
       START_LESSON,
-      sidebarRef.current,
+      getStartedRef.current,
       startLessonRef.current
     );
   }, [dispatch]);
 
-  const handleStartLesson = () => {
-    setView(1);
-  }
-
-  useEffect(() => {
-    if (view === 1) {
-      OnBoardingService.setStep(
-        dispatch,
-        START_CHALLENGE,
-        sidebarRef.current,
-        startChallengeRef.current
-      );
-    }
-  }, [dispatch, view])
-
-  return <div className='right-side-bar' ref={sidebarRef}>
-    { view === 0 ? <>
-        <h5>1. Getting Started</h5>
+  return <div className='right-side-bar'>
+        <h5 ref={getStartedRef}>1. Getting Started</h5>
         <p>
           Contrary to popular belief, Lorem Ipsum is not simply random text. It has
           roots in a piece of classical Latin literature from 45 BC, making 
@@ -54,16 +36,6 @@ export const RightSideBar = () => {
           are also reproduced in their exact original form, accompanied by English 
           versions from the 1914 translation by H. Rackham.
         </p>
-        <button className='start-lesson-button' onClick={handleStartLesson} ref={startLessonRef}>Start lesson</button>
-      </> : <>
-        <h5>2. Start Challenge</h5>
-        <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It has
-          roots in a piece of classical Latin literature from 45 BC, making 
-          it over 2000 years old. Richard McClintock, a Latin professor at
-        </p>
-        <button className='start-challenge-button' onClick={() => alert(33)} ref={startChallengeRef}>Start challenge</button>
-      </>
-    }
+        <button className='start-lesson-button' onClick={() => alert(1)} ref={startLessonRef}>Start lesson</button>
   </div>
 }

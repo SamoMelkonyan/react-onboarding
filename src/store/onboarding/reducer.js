@@ -2,12 +2,12 @@ const reducer = (state = {step: null}, action) => {
   if (action.type === 'SET_STEP') {
     return {
       ...state,
-      step: action.payload
+      steps: action.payload
     }
   } else if (action.type === 'CLOSE') {
     return {
       ...state,
-      step: null
+      steps: null
     }
   }
   return state;
